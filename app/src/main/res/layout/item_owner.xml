@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/space_normal"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/space_normal"
+    android:paddingRight="@dimen/space_normal"
+    android:paddingTop="@dimen/space_normal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_normal"
+        android:orientation="horizontal">
+
+
+
+        <TextView
+            android:background="?selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:textSize="@dimen/size_normal"
+            android:textColor="@color/colorSecondaryText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_favorite"
+            android:text="1280" />
+
+        <TextView
+            android:background="?selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:textSize="@dimen/size_normal"
+            android:textColor="@color/colorSecondaryText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_dinner"
+            android:text="200" />
+
+        <TextView
+            android:background="?selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:textSize="@dimen/size_normal"
+            android:textColor="@color/colorSecondaryText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_star"
+            android:text="777" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_large">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ivAvatar"
+            android:layout_marginRight="@dimen/space_small"
+            android:layout_toLeftOf="@id/ivAvatar"
+            android:background="?selectableItemBackground"
+            android:text="KHTN"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/size_normal" />
+
+        <TextView
+            android:id="@+id/tvRestaurant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTitle"
+            android:layout_marginRight="@dimen/space_small"
+            android:layout_marginTop="4dp"
+            android:layout_toLeftOf="@id/ivAvatar"
+            android:text="05/02/2018"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.25dp"
+        android:layout_marginTop="@dimen/space_normal"
+        android:background="@color/divider" />
+</LinearLayout>
