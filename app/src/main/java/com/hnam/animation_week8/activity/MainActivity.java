@@ -1,19 +1,20 @@
 package com.hnam.animation_week8.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
+import android.widget.ImageView;
 
 import com.hnam.animation_week8.R;
 import com.hnam.animation_week8.adapter.MealAdapter;
+import com.hnam.animation_week8.model.Meal;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,23 +40,21 @@ public class MainActivity extends AppCompatActivity {
 
     private MealAdapter.MealAdapterListener adapterListener = new MealAdapter.MealAdapterListener() {
         @Override
-        public void onItemClick() {
-            //Intent i = new Intent(MainActivity.this, MealDetailActivity.class);
-            //startActivity(i);
+        public void onItemClick(ImageView image, Meal meal) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, image, getString(R.string.transition_image));
+            startActivity(MealDetailActivity.getIntent(MainActivity.this, meal), options.toBundle());
 
-            Intent i = new Intent(MainActivity.this, MealDetailActivity.class);
-            // options need to be passed when starting the activity
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this);
-            startActivity(i, options.toBundle());
-        }
-
-        @Override
-        public void onAvatarClick() {
 
         }
 
         @Override
-        public void onOrderClick() {
+        public void onAvatarClick(CircleImageView imageView, String name, String url) {
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, imageView, getString(R.string.transition_image));
+            startActivity(UserDetailActivity.getIntent(MainActivity.this, name, url), options.toBundle());
+        }
+
+        @Override
+        public void onOrderClick(Meal meal) {
 
         }
     };

@@ -33,6 +33,7 @@
                     android:layout_height="256dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
+                    android:transitionName="@string/transition_image"
                     tools:src="@drawable/sample"
                     tools:targetApi="lollipop" />
 

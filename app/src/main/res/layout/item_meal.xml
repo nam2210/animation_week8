@@ -28,6 +28,7 @@
                 android:layout_height="200dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
+                android:transitionName="@string/transition_image"
                 android:src="@drawable/sample" />
 
             <RelativeLayout

@@ -21,6 +21,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/space_normal"
             android:scaleType="centerCrop"
+            android:transitionName="@string/transition_image"
             tools:src="@mipmap/ic_launcher" />
 
         <TextView

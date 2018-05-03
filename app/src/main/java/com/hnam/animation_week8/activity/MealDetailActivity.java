@@ -16,8 +16,10 @@ import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.ImageView;
 
 
+import com.bumptech.glide.Glide;
 import com.hnam.animation_week8.R;
 import com.hnam.animation_week8.adapter.MealDetailAdapter;
 import com.hnam.animation_week8.model.Meal;
@@ -40,6 +42,9 @@ public class MealDetailActivity extends AppCompatActivity {
     @BindView(R.id.fab)
     FloatingActionButton fab;
 
+    @BindView(R.id.cover)
+    ImageView ivCover;
+
     public static Intent getIntent(Context context, Meal meal) {
         Intent intent = new Intent(context, MealDetailActivity.class);
         intent.putExtra(MEAL, Parcels.wrap(meal));
@@ -50,19 +55,17 @@ public class MealDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Transition t = TransitionInflater.from(this).inflateTransition(R.transition.slide_right);
-        t.excludeTarget(android.R.id.statusBarBackground, true);
-        t.excludeTarget(toolbar, true);
-        getWindow().setEnterTransition(t);
-
 
         Meal meal = (Meal) Parcels.unwrap(getIntent().getParcelableExtra(MEAL));
         setContentView(R.layout.activity_meal_detail);
         ButterKnife.bind(this);
-//        rvContent.setAdapter(new MealDetailAdapter(meal));
-//        rvContent.setLayoutManager(new LinearLayoutManager(this));
+        rvContent.setAdapter(new MealDetailAdapter(meal));
+        rvContent.setLayoutManager(new LinearLayoutManager(this));
         setUpToolbar();
-//        setUpFab();
+        setUpFab();
+
+        Glide.with(this).load(meal.getImage()).into(ivCover);
+
     }
 
     private void setUpToolbar() {
@@ -88,6 +91,18 @@ public class MealDetailActivity extends AppCompatActivity {
     }
 
 
-
-
+    @Override
+    public void onBackPressed() {
+        fab.animate().alpha(0)
+                .scaleX(0)
+                .scaleY(0)
+                .setDuration(300)
+                .setInterpolator(new AccelerateInterpolator())
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        MealDetailActivity.super.onBackPressed();
+                    }
+                }).start();
+    }
 }

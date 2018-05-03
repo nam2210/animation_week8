@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.View;
 import android.widget.TextView;
 
@@ -44,14 +46,19 @@ public class UserDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Transition  t = TransitionInflater.from(this).inflateTransition(R.transition.user_detail_transition);
+        getWindow().setSharedElementEnterTransition(t);
+
         String username = getIntent().getStringExtra(USERNAME);
         String avatar = getIntent().getStringExtra(AVATAR);
         setContentView(R.layout.activity_user_detail);
-        tvUsername.setText(username);
-        Glide.with(this).load(avatar).into(ivAvatar);
 
         ButterKnife.bind(this);
         rvMeals.setAdapter(new ImageAdapter());
         rvMeals.setLayoutManager(new GridLayoutManager(this, 2));
+
+        tvUsername.setText(username);
+        Glide.with(this).load(avatar).into(ivAvatar);
     }
 }
