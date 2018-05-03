@@ -94,17 +94,17 @@ public class MealAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         @OnClick(R.id.container)
         public void onItemClick() {
-
+            mListener.onItemClick();
         }
 
         @OnClick(R.id.ivAvatar)
         public void onAvatarClick() {
-
+            mListener.onAvatarClick();
         }
 
         @OnClick(R.id.tvOrder)
         public void onOrderClick() {
-
+            mListener.onOrderClick();
         }
     }
 
