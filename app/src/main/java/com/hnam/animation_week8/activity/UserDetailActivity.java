@@ -3,6 +3,7 @@ package com.hnam.animation_week8.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -60,5 +61,19 @@ public class UserDetailActivity extends AppCompatActivity {
 
         tvUsername.setText(username);
         Glide.with(this).load(avatar).into(ivAvatar);
+
+        for (View view : views){
+            moveUp(view, 600);
+        }
     }
+
+    private void moveUp(View view, int duration){
+        view.setTranslationY(500);
+        view.animate()
+            .translationYBy(-500)
+            .setDuration(duration)
+            .start();
+    }
+
+
 }
