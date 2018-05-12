@@ -50,19 +50,15 @@ public class MealDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Transition t = TransitionInflater.from(this).inflateTransition(R.transition.slide_right);
-        t.excludeTarget(android.R.id.statusBarBackground, true);
-        t.excludeTarget(toolbar, true);
-        getWindow().setEnterTransition(t);
 
 
         Meal meal = (Meal) Parcels.unwrap(getIntent().getParcelableExtra(MEAL));
         setContentView(R.layout.activity_meal_detail);
         ButterKnife.bind(this);
-//        rvContent.setAdapter(new MealDetailAdapter(meal));
-//        rvContent.setLayoutManager(new LinearLayoutManager(this));
+        rvContent.setAdapter(new MealDetailAdapter(meal));
+        rvContent.setLayoutManager(new LinearLayoutManager(this));
         setUpToolbar();
-//        setUpFab();
+        setUpFab();
     }
 
     private void setUpToolbar() {

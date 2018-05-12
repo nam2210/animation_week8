@@ -40,18 +40,14 @@ public class MainActivity extends AppCompatActivity {
     private MealAdapter.MealAdapterListener adapterListener = new MealAdapter.MealAdapterListener() {
         @Override
         public void onItemClick() {
-            //Intent i = new Intent(MainActivity.this, MealDetailActivity.class);
-            //startActivity(i);
-
             Intent i = new Intent(MainActivity.this, MealDetailActivity.class);
-            // options need to be passed when starting the activity
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this);
-            startActivity(i, options.toBundle());
+            startActivity(i);
         }
 
         @Override
         public void onAvatarClick() {
-
+            Intent i = new Intent(MainActivity.this, UserDetailActivity.class);
+            startActivity(i);
         }
 
         @Override
