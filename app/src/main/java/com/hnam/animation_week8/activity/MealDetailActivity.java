@@ -16,8 +16,10 @@ import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.ImageView;
 
 
+import com.bumptech.glide.Glide;
 import com.hnam.animation_week8.R;
 import com.hnam.animation_week8.adapter.MealDetailAdapter;
 import com.hnam.animation_week8.model.Meal;
@@ -40,6 +42,10 @@ public class MealDetailActivity extends AppCompatActivity {
     @BindView(R.id.fab)
     FloatingActionButton fab;
 
+
+    @BindView(R.id.cover)
+    ImageView ivCover;
+
     public static Intent getIntent(Context context, Meal meal) {
         Intent intent = new Intent(context, MealDetailActivity.class);
         intent.putExtra(MEAL, Parcels.wrap(meal));
@@ -50,8 +56,6 @@ public class MealDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         Meal meal = (Meal) Parcels.unwrap(getIntent().getParcelableExtra(MEAL));
         setContentView(R.layout.activity_meal_detail);
         ButterKnife.bind(this);
@@ -59,6 +63,7 @@ public class MealDetailActivity extends AppCompatActivity {
         rvContent.setLayoutManager(new LinearLayoutManager(this));
         setUpToolbar();
         setUpFab();
+        Glide.with(this).load(meal.getImage()).into(ivCover);
     }
 
     private void setUpToolbar() {
