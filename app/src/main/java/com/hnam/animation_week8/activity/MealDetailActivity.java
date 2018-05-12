@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
@@ -51,6 +53,9 @@ public class MealDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Transition t = TransitionInflater.from(this).inflateTransition(R.transition.slide_right);
+        getWindow().setSharedElementEnterTransition(t);
 
 
         Meal meal = (Meal) Parcels.unwrap(getIntent().getParcelableExtra(MEAL));

@@ -41,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private MealAdapter.MealAdapterListener adapterListener = new MealAdapter.MealAdapterListener() {
         @Override
         public void onItemClick(ImageView image, Meal meal) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, image, getString(R.string.transition_image));
+
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    MainActivity.this, image, getString(R.string.transition_image));
             startActivity(MealDetailActivity.getIntent(MainActivity.this, meal), options.toBundle());
 
 
@@ -49,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onAvatarClick(CircleImageView imageView, String name, String url) {
-            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, imageView, getString(R.string.transition_image));
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    MainActivity.this, imageView, getString(R.string.transition_image));
             startActivity(UserDetailActivity.getIntent(MainActivity.this, name, url), options.toBundle());
         }
 
