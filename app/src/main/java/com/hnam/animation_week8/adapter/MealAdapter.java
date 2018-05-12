@@ -50,9 +50,9 @@ public class MealAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public interface MealAdapterListener{
-        void onItemClick();
-        void onAvatarClick();
-        void onOrderClick();
+        void onItemClick(ImageView imageView, Meal meal);
+        void onAvatarClick(CircleImageView imageView,String name, String avatar);
+        void onOrderClick(Meal meal);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -94,17 +94,17 @@ public class MealAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         @OnClick(R.id.container)
         public void onItemClick() {
-            mListener.onItemClick();
+            mListener.onItemClick(imageView, this.meal);
         }
 
         @OnClick(R.id.ivAvatar)
         public void onAvatarClick() {
-            mListener.onAvatarClick();
+            mListener.onAvatarClick(avatar, this.meal.getUsername(), this.meal.getAvatar());
         }
 
         @OnClick(R.id.tvOrder)
         public void onOrderClick() {
-            mListener.onOrderClick();
+            mListener.onOrderClick(this.meal);
         }
     }
 

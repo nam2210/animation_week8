@@ -44,13 +44,17 @@ public class UserDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_detail);
+        ButterKnife.bind(this);
+
         String username = getIntent().getStringExtra(USERNAME);
         String avatar = getIntent().getStringExtra(AVATAR);
-        setContentView(R.layout.activity_user_detail);
+
         tvUsername.setText(username);
         Glide.with(this).load(avatar).into(ivAvatar);
 
-        ButterKnife.bind(this);
+
+
         rvMeals.setAdapter(new ImageAdapter());
         rvMeals.setLayoutManager(new GridLayoutManager(this, 2));
     }
